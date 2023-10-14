@@ -1,0 +1,9 @@
+set enviroment to test to run the code
+export DJANGO_DB_TEST=false
+
+start server
+python manage.py runserver
+
+
+start environment 
+source TempEnv/bin/activate
