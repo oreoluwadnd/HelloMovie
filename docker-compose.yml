@@ -10,6 +10,6 @@ services:
   react:
     build:
       context: .
-      dockerfile: Frontend/HelloFoods/Dockerfile
+      dockerfile: Frontend/helloMovies/Dockerfile
     ports:
       - "5173:5173"

@@ -74,7 +74,7 @@ export default function Home() {
         console.log(data);
         return data;
       } catch (error) {
-        return error;
+        // setErorr(`Something went wrong`);
       }
     }
 
