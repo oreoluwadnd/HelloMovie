@@ -8,6 +8,4 @@ python manage.py runserver
 start environment 
 source TempEnv/bin/activate
 
-
-
 python3 -m venv TempEnv

@@ -13,7 +13,7 @@ RUN ls -a
 # run this command to install all dependencies  
 
 RUN export DJANGO_DB_TEST=false
-RUN pip install django django-cors-headers
+
 
 # port where the Django app runs  
 EXPOSE 8000  

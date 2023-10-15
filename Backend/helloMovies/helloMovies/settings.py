@@ -15,6 +15,11 @@ import sys
 
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -92,11 +97,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'hellomovies',
-            'HOST': 'aws.connect.psdb.cloud',
-            'PORT': '3306',
-            'USER': 'okak7crcub5ic5lajj8m',
-            'PASSWORD': 'pscale_pw_8rhrVZoUqXgb9sFblsKm6sFMm7rVsUQApMv9TDLd1Dj',
+            'NAME': os.getenv("DB_NAME"),
+            'HOST': os.getenv("DB_HOST"),
+            'PORT': os.getenv("DB_PORT"),
+            'USER': os.getenv("DB_USER"),
+            'PASSWORD': os.getenv("DB_PASSWORD"),
             'OPTIONS': {
                  'charset': 'utf8mb4',
                 'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'},}
