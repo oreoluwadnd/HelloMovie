@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const searchTerm = "The Matrix";
+const API_URL = "http://127.0.0.1:8000/";
+const CLIENT_URL = "http://localhost:5173/";
 
 describe("Search for movies by keyword", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:5173/");
+    cy.visit(`${CLIENT_URL}`);
   });
 
   it("should display the search input", () => {
@@ -10,17 +14,13 @@ describe("Search for movies by keyword", () => {
   });
 
   it("should display an error message for no results and no movie result", () => {
-    cy.intercept(
-      "GET",
-      "http://127.0.0.1:8000/movies/search/?q=The%20Matrix&page=1",
-      {
-        statusCode: 404,
-      }
-    ).as("fetchData");
+    cy.intercept("GET", `${API_URL}movies/search/?q=The%20Matrix&page=1`, {
+      statusCode: 404,
+    }).as("fetchData");
     const searchTerm = "The Matrix";
     cy.get('[data-testid="search-bar"]').type(searchTerm);
     cy.get('[data-testid="search-bar"]').type("{enter}");
-    cy.url().should("include", "http://localhost:5173/?q=The%20Matrix");
+    cy.url().should("include", `${CLIENT_URL}?q=The%20Matrix`);
     cy.wait("@fetchData");
     cy.get('[data-testid="error-box"]').should("exist");
     cy.contains('No results found for "The Matrix"').should("exist");
@@ -29,9 +29,7 @@ describe("Search for movies by keyword", () => {
 
   it("display favorite movies", () => {
     // Intercept the API request and delay the response to simulate loading
-    cy.intercept("GET", "http://127.0.0.1:8000/movies/search/?q=a&page=1").as(
-      "fetchData"
-    );
+    cy.intercept("GET", `${API_URL}movies/search/?q=a&page=1`).as("fetchData");
     // Trigger the action that initiates the API request (e.g., click a button)
     // Replace the selector with the appropriate one from your application
     const correctTerm = "a";
@@ -46,9 +44,7 @@ describe("Search for movies by keyword", () => {
     cy.get('[data-testid="movie-card"]').should("have.length.greaterThan", 0);
   });
   it("Movie Card Layout Selection", () => {
-    cy.intercept("GET", "http://127.0.0.1:8000/movies/search/?q=a&page=1").as(
-      "fetchData"
-    );
+    cy.intercept("GET", `${API_URL}movies/search/?q=a&page=1`).as("fetchData");
 
     const correctTerm = "a";
     cy.get('[data-testid="search-bar"]').type(correctTerm);
@@ -64,9 +60,7 @@ describe("Search for movies by keyword", () => {
   });
   it("should navigate to the next page of movies", () => {
     // Intercept the API request and delay the response to simulate loading
-    cy.intercept("GET", "http://127.0.0.1:8000/movies/search/?q=a&page=1").as(
-      "fetchData"
-    );
+    cy.intercept("GET", `${API_URL}movies/search/?q=a&page=1`).as("fetchData");
     // Trigger the action that initiates the API request (e.g., click a button)
     // Replace the selector with the appropriate one from your application
     const correctTerm = "a";
@@ -88,9 +82,7 @@ describe("Search for movies by keyword", () => {
     cy.get('[data-testid="movie-card"]').should("exist");
   });
   it("should open the dedicated movie's view when a movie card is clicked and back button", () => {
-    cy.intercept("GET", "http://127.0.0.1:8000/movies/search/?q=a&page=1").as(
-      "fetchData"
-    );
+    cy.intercept("GET", `${API_URL}/search/?q=a&page=1`).as("fetchData");
     const correctTerm = "a";
     cy.get('[data-testid="search-bar"]').type(correctTerm);
     cy.get('[data-testid="search-bar"]').type("{enter}");
@@ -102,7 +94,7 @@ describe("Search for movies by keyword", () => {
     cy.url().should("include", "/14");
 
     cy.get('[data-testid="movie-details"]').should("exist");
-    cy.visit("http://localhost:5173/14");
+    cy.visit(`${CLIENT_URL}14`);
     cy.get('[data-testid="movie-details"]').should("exist");
     cy.get('[data-testid="headerLogo"]').click();
     cy.url().should("include", "/");

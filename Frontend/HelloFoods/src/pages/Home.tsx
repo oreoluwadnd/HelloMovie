@@ -27,6 +27,8 @@ export type MoviesData = {
   results: Movie[];
 };
 
+const API_URL = "http://0.0.0.0:8000/";
+
 export default function Home() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -50,7 +52,7 @@ export default function Home() {
     setLoading(true);
     console.log(query, page);
     async function fetchDataFromDatabase() {
-      const url = "http://127.0.0.1:8000/movies/search/";
+      const url = `${API_URL}movies/search/`;
       try {
         // Make a GET request to the database API endpoint
         const response = await fetch(`${url}?q=${query}&page=${page}`, {

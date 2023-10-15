@@ -6,6 +6,8 @@ import { Movie } from "./Home";
 import Loader from "../components/Loader";
 import ErrorBox from "../components/ErrorBox";
 
+const API_URL = "http://0.0.0.0:8000/";
+
 export default function Details() {
   const navigate = useNavigate();
   const [movieDetails, setMovieDetails] = useState<Movie | null>();
@@ -15,7 +17,7 @@ export default function Details() {
   useEffect(() => {
     setLoading(true);
     async function fetchDataFromDatabase() {
-      const url = "http://127.0.0.1:8000/movies/";
+      const url = `${API_URL}/movies/`;
       try {
         // Make a GET request to the database API endpoint
         const response = await fetch(`${url}${id}/`, {
