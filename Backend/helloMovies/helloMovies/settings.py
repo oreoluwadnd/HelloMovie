@@ -97,7 +97,9 @@ else:
             'PORT': '3306',
             'USER': 'okak7crcub5ic5lajj8m',
             'PASSWORD': 'pscale_pw_8rhrVZoUqXgb9sFblsKm6sFMm7rVsUQApMv9TDLd1Dj',
-            'OPTIONS': {'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'}}
+            'OPTIONS': {
+                 'charset': 'utf8mb4',
+                'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'},}
         }
     }
 
@@ -121,6 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
@@ -148,7 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Allow any origin (not recommended for production)
 CORS_ALLOW_ALL_ORIGINS = True
-
+ALLOWED_HOSTS = ['0.0.0.0']
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     # Add any other origins that should be allowed
