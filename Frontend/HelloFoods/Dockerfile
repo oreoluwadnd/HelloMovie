@@ -11,8 +11,8 @@ WORKDIR /client/app
 
 # copy configs to /app folder
 # Copy dependency definitions
-COPY package.json /client/app
-COPY package-lock.json /client/app
+COPY Frontend/HelloFoods/package.json /client/app
+COPY Frontend/HelloFoods/package-lock.json /client/app
 
 
 
@@ -25,7 +25,7 @@ RUN npm ci
 
 
 # copy source code to /app/src folder
-COPY . /client/app
+COPY Frontend/HelloFoods /client/app
 
 EXPOSE 5173
 
