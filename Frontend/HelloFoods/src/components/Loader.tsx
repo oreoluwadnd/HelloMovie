@@ -1,6 +1,9 @@
 export default function Loader() {
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-black opacity-50 flex justify-center items-center">
+    <div
+      data-testid="loader"
+      className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-black opacity-50 flex justify-center items-center"
+    >
       <div className="modal-content relative z-10  rounded-md p-4">
         <div className="flex justify-center items-center">
           <svg

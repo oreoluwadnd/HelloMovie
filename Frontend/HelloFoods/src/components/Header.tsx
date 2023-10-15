@@ -5,6 +5,7 @@ export default function Header() {
   return (
     <header className="flex justify-start items-center  w-full h-14 md:h-16 lg:h-16  py-4 px-4 md:px-5 lg:px-[72px]">
       <img
+        data-testid="headerLogo"
         onClick={() => navigate("/")}
         src="/logos/header-logo.svg"
         alt="header img"

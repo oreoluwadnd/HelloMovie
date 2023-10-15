@@ -110,8 +110,8 @@ export default function Home() {
   };
   return (
     <Layout>
-      {loading && <Loader data-testid="loader" />}
-      <div className="md:px-5 px-4 text-center lg:px-[72px] flex-col flex gap-3 md:max-w-[696px] lg:max-w-[776] overflow-y-hidden">
+      {loading && <Loader />}
+      <div className="md:px-5 px-4 text-center lg:px-[72px] flex-col flex gap-3 md:max-w-[696px] lg:max-w-[776] items-center">
         <div className="gap-3 flex flex-col">
           <h1 className="text-3xl font-bold text-slate-100 md:text-5xl lg:text-[64px]">
             Need help finding the next movie?
@@ -122,8 +122,10 @@ export default function Home() {
         </div>
         <div className="flex  md:max-w-lg gap-3 flex-col items-center">
           <Input
+            data-testid="search-bar"
             placeholder="Search for your next movie"
             value={keyword}
+            type="text"
             onChange={handleInput}
             onKeyDown={handleKeypress}
           />

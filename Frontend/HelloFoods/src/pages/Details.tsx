@@ -71,7 +71,10 @@ export default function Details() {
       {loading && <Loader />}
       {movieDetails && (
         <>
-          <div className="px-4 gap-5 flex flex-col items-center">
+          <div
+            data-testid="movie-details"
+            className="px-4 gap-5 flex flex-col items-center"
+          >
             <div className=" mt-8  bg-100 w-full rounded-2xl flex flex-col md:flex-row max-w-5xl max-h-[512]">
               <div className="relative">
                 <img

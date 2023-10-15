@@ -24,10 +24,15 @@ export default function MovieCard({
 }) {
   return (
     <Link
+      data-testid="movie-card"
       to={`/${data?.id}`}
-      className={cn("flex flex-col gap-[7px]  transition relative w-full ", {
-        "flex-row h-40 bg-100 rounded-r-2xl gap-0": horizontalLayout,
-      })}
+      className={cn(
+        "flex flex-col gap-[7px]  transition relative w-full vertical ",
+        {
+          "flex-row h-40 bg-100 rounded-r-2xl gap-0 horizontal":
+            horizontalLayout,
+        }
+      )}
     >
       <div
         className={cn("w-full", {

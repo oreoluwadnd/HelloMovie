@@ -28,7 +28,10 @@ export default function MovieResult({
   };
 
   return (
-    <div className="lg:px-[72px] md:px-5 px-4 justify-center items-center w-full flex-col flex gap-4 md:max-w-[696px] lg:max-w-[1120px] text-white">
+    <div
+      data-testid="cards-layout-menu"
+      className="lg:px-[72px] md:px-5 px-4 justify-center items-center w-full flex-col flex gap-4 md:max-w-[696px] lg:max-w-[1120px] text-white"
+    >
       <div className="flex w-full justify-between items-center">
         <p>
           Found <span className="text-amber-400">{movies.total_movies}</span>{" "}
@@ -38,6 +41,7 @@ export default function MovieResult({
           <p className="text-xs">layout:</p>
           <div className="flex gap-3">
             <span
+              data-testid="layout-option-vertical"
               onClick={handleVerticaLayout}
               className={cn(
                 " py-2 px-2 bg-slate-900 rounded-md text-slate-600 cursor-pointer",
@@ -62,6 +66,7 @@ export default function MovieResult({
               </svg>
             </span>
             <span
+              data-testid="layout-option-horizontal"
               onClick={handleHorizontaLayout}
               className={cn(
                 " py-2 px-2 rounded-md bg-slate-900 text-slate-600  cursor-pointer",
@@ -105,12 +110,13 @@ export default function MovieResult({
         ))}
       </div>
       <div className="text-slate-200 text-center lg:px-[72px] md:px-5 px-4   w-full flex-col flex gap-3 md:max-w-[696px] lg:max-w-[776]">
-        <p>
+        <p data-testid="page-number">
           Showing {startIndex} to {endIndex} of
           <span className="text-amber-400 ml-1">{total_movies}</span> results
         </p>
         <div className="flex justify-between">
           <button
+            data-testid="previous-page-button"
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
             className={cn(
@@ -124,6 +130,7 @@ export default function MovieResult({
             Previous
           </button>
           <button
+            data-testid="next-page-button"
             disabled={currentPage === totalPages}
             onClick={() => handlePageChange(currentPage + 1)}
             className={cn(
