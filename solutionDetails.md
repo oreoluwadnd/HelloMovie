@@ -14,16 +14,8 @@ LIst of techologies I used
 
 - Docker for Containerization
 
+## React (Vite TypeScript) Frontend:
 
-## Python (Django) Backend:
-
-- Rapid Development: Django, as a high-level web framework, offers a wealth of built-in features, reducing the need for developers to reinvent the wheel. It includes an ORM, authentication, and templating, speeding up the development process.
-
-- Scalability: Django's "batteries-included" philosophy means it includes reusable apps and a flexible ORM. This modular architecture makes it easy to scale your application as your user base grows.
-
-- Testing - It also come with a built in test feature which makes it easy to write unit test with no hassle
-
-##React (Vite TypeScript) Frontend:
 I have implemented a route-based approach for search, ensuring that when a user refreshes the page, they will consistently see the same search results. This approach greatly enhances the user experience. Additionally, I've  adhered to the design specifications from Figma, meticulously matching every detail, including dimensions and color choices, to ensure a visually consistent and polished user interface.
 
 
@@ -32,6 +24,15 @@ I have implemented a route-based approach for search, ensuring that when a user 
 - Type Safety with TypeScript: TypeScript adds static typing to JavaScript, making your code more predictable and maintainable. It helps catch errors during development and offers improved code completion in modern code editors.
 
 - Vite for Speed: Vite is a next-generation build tool that significantly accelerates development. Its dev server provides nearly instant updates, offering a smoother development experience, particularly for React applications.
+
+
+## Python (Django) Backend:
+
+- Rapid Development: Django, as a high-level web framework, offers a wealth of built-in features, reducing the need for developers to reinvent the wheel. It includes an ORM, authentication, and templating, speeding up the development process.
+
+- Scalability: Django's "batteries-included" philosophy means it includes reusable apps and a flexible ORM. This modular architecture makes it easy to scale your application as your user base grows.
+
+- Testing - It also come with a built in test feature which makes it easy to write unit test with no hassle
 
 
 ## Tailwind CSS for Styling:
@@ -52,9 +53,6 @@ I have implemented a route-based approach for search, ensuring that when a user 
 - Simplified Deployment: Docker simplifies the deployment process. You package your application, along with all its dependencies, into a container image, eliminating the infamous "It works on my machine" problem and streamlining deployment.
 
 - Scaling: Docker containers can be effortlessly scaled up or down to accommodate increased loads. When coupled with orchestration tools like Kubernetes, Docker enables automated scaling and seamless management of your application.
-
-
-Certainly, let's provide a more detailed explanation of why your chosen technology stack is the best fit for building the application:
 
 
 ## MySQL Database:
