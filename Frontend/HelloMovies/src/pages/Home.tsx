@@ -62,6 +62,7 @@ export default function Home() {
         // Check if the response status code is OK (200)
         if (!response.ok) {
           setErorr(`No results found for "${query}"`);
+          return;
         }
         if (response.ok) {
           setErorr("");
@@ -91,7 +92,6 @@ export default function Home() {
           setErorr(`No results found for ${query}`);
         } else {
           console.error("Error fetching data:", error);
-          // Handle other errors, e.g., display a generic error message
         }
       });
   }, [query, page]);

@@ -32,10 +32,8 @@ export default function Details() {
           setErorr(false);
         }
 
-        // Parse the JSON response data
         const data = await response.json();
 
-        // Use the retrieved data
         console.log(data);
         return data;
       } catch (error) {
@@ -46,7 +44,6 @@ export default function Details() {
     // Usage
     fetchDataFromDatabase()
       .then((data) => {
-        // Do something with the data
         setMovieDetails(data);
         setLoading(false);
         console.log(data);
