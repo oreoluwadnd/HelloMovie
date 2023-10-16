@@ -1,26 +1,25 @@
 # HelloMovies
-
 This is a Django-React web application that allows you to seacrh for your favourite movie.
-
 ## Prerequisites
-
+***
 Before you get started, ensure you have met the following requirements:
 
 - Python, Node.js, Docker
+- I already have a MySQL database set up in the cloud with existing movie data. In your Django project, create an .env file at the root and paste the provided environment variables into this file.
 
 ## Getting Started
-
+***
 To get your project up and running, follow these steps:
 
 ###  Clone the Repository
-
+***
 ```bash
 git clone https://github.com/oreoluwadnd/HelloMovie
 cd HelloMovie
 ```
 
 ### Set Up Backend (Django)
-
+***
 ```bash
 cd Backend/
 python -m venv venv # Create a virtual environment
@@ -33,7 +32,7 @@ python manage.py runserver # Run the server
 
 
 ### Set Up Frontend (React)
-
+***
 ```bash
 cd Frontend/HelloMovies/
 npm install # Install Pakages
@@ -41,6 +40,7 @@ npm run dev # start development
 ``` 
 
 ###   Using Docker
+***
 a. Build the django image 
 To run the Django container individually, you need update the Dockerfile
 `COPY Backend/helloMovies/requirements.txt /app` -> `COPY /requirements.txt /app`
@@ -52,7 +52,7 @@ docker build -t <image-name> . # Build Image
 docker run -p 8000:8000 <image-name> # Run the instance
 ```
 
-b. Build and Run Docker Containers 
+b. Build and Run Docker Containers
 To run the Django container individually, you need update the Dockerfile
 `COPY Frontend/HelloMovies/package.json /client/app`-> `COPY package.json /client/app`
 `COPY Frontend/HelloMovies/package-lock.json /client/app`-> `COPY package-lock.json /client/app`
@@ -66,6 +66,7 @@ docker run -p 5173:5173 <image-name>
 
 
 ###   Using Docker Compose
+***
 a. Build and Run Docker Both Containers
 ```bash
 docker compose up
@@ -73,6 +74,7 @@ docker compose up
 
 
 ### For Django (Back-End Testing)
+***
 You can run tests for the Django back-end using the following commands
 ```bash
 cd /path/to/django/project
@@ -80,6 +82,7 @@ python manage.py test
 ```
 
 ### For React (Front-End Testing)
+***
 You can run tests for the Django back-end using the following commands
 ```bash
 cd /path/to/react/app
@@ -87,6 +90,7 @@ npm test
 ```
 
 ### For Cypress (E2E TESTING)
+***
 You can run tests for the Django back-end using the following commands
 ```bash
 cd Frontend/HelloMovies
