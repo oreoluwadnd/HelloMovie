@@ -26,6 +26,7 @@ LIst of techologies I used
 ##React (Vite TypeScript) Frontend:
 I have implemented a route-based approach for search, ensuring that when a user refreshes the page, they will consistently see the same search results. This approach greatly enhances the user experience. Additionally, I've  adhered to the design specifications from Figma, meticulously matching every detail, including dimensions and color choices, to ensure a visually consistent and polished user interface.
 
+
 - User Interface: React is celebrated for its ability to create dynamic and interactive user interfaces. It's the preferred choice when building SPAs (Single Page Applications) due to its virtual DOM and efficient updates.
 
 - Type Safety with TypeScript: TypeScript adds static typing to JavaScript, making your code more predictable and maintainable. It helps catch errors during development and offers improved code completion in modern code editors.

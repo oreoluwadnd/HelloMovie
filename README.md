@@ -8,9 +8,9 @@ Welcome to my Django-MySQL-React web application! The project's primary aim is t
 
 Before you get started, ensure you have met the following requirements: 📋✅
 
-- If you will be running the project with docker compose you just have to copy the env file at the root of the django project and follow this docker compose section
-- Python, Node.js, Docker
+- If you will be running the project with docker compose you just have to copy the env file at the root of the django project and follow this docker compose section.
 - Knowlegde of React, Typescript, Python, Cypress , Unit Testing, E2E cypress.
+- Python, Node.js, Docker
 - I already have a MySQL database set up in the cloud with existing movie data. In your Django project, create an .env file at the root and paste the provided environment variables into this file.
 
 ## Getting Started 🏇
