@@ -15,7 +15,7 @@ LIst of techologies I used
 - Docker for Containerization
 
 
-##Python (Django) Backend:
+## Python (Django) Backend:
 
 - Rapid Development: Django, as a high-level web framework, offers a wealth of built-in features, reducing the need for developers to reinvent the wheel. It includes an ORM, authentication, and templating, speeding up the development process.
 
@@ -34,7 +34,7 @@ I have implemented a route-based approach for search, ensuring that when a user 
 - Vite for Speed: Vite is a next-generation build tool that significantly accelerates development. Its dev server provides nearly instant updates, offering a smoother development experience, particularly for React applications.
 
 
-##Tailwind CSS for Styling:
+## Tailwind CSS for Styling:
 
 - Utility-First Approach: Tailwind CSS follows an "utility-first" approach, which means it provides a vast collection of utility classes that can be applied directly in your HTML. This approach enables rapid prototyping and custom styling without writing extensive CSS.
 
@@ -45,7 +45,7 @@ I have implemented a route-based approach for search, ensuring that when a user 
 - Responsive Design: Tailwind CSS has built-in classes for creating responsive designs, making it easy to adapt your application to different screen sizes and devices.
 
 
-##Docker for Containerization:
+## Docker for Containerization:
 
 - Portability: Docker containers are highly portable. By encapsulating your application and its dependencies within a container image, you ensure consistency across various environments, from development to testing and production.
 
@@ -57,7 +57,7 @@ I have implemented a route-based approach for search, ensuring that when a user 
 Certainly, let's provide a more detailed explanation of why your chosen technology stack is the best fit for building the application:
 
 
-##MySQL Database:
+## MySQL Database:
 
 - Performance: MySQL is recognized for its performance, particularly with read-heavy workloads. In an application like yours, which deals with a movie catalog, quick data retrieval is crucial.
 
@@ -69,7 +69,7 @@ Certainly, let's provide a more detailed explanation of why your chosen technolo
 
 - Mocks and Spies: Jest includes built-in mocking and spying capabilities. These are essential for isolating components or functions during unit tests, ensuring that you test only the specific piece of code you're interested in.
 
-##Cypress for E2E Testing:
+## Cypress for E2E Testing:
 
 - Realistic Testing: Cypress is renowned for its ability to perform end-to-end testing, allowing you to simulate real user interactions with your application. This realism is critical for ensuring that your application functions as expected from the user's perspective.
 
