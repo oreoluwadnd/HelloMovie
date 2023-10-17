@@ -21,11 +21,11 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Navigate to React Project
-        run: cd Frontend/HelloMovies
-
       - name: Install dependencies
         run: pip install -r Backend/helloMovies/requirements.txt
+
+      - name: Change to test db
+        run: export DJANGO_DB_TEST=true
 
       - name: Run tests
         working-directory: Backend/helloMovies
