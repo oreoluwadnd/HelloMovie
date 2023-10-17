@@ -1,9 +1,7 @@
 name: Django CI
 
 on:
-  push:
-    branches:
-      - development
+  push
 
 jobs:
   build:
