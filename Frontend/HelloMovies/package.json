@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
+    "e2e": "cypress run",
     "test:watch": "jest --watch",
     "dev": "vite --host",
     "build": "tsc && vite build",

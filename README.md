@@ -40,7 +40,7 @@ python manage.py runserver # Run the server
 ### Set Up Frontend 💅🏿(React)
 
 ***
-If you be using this method you will have to change the url in Home.tsx and Details.tsx
+If you be using this method you will have to change the url e2e and utils/constant
 API_URL = `"http://0.0.0.0:8000/"`  ---> `http://127.0.0.1:8000/`
 ```bash
 cd Frontend/HelloMovies/
@@ -103,7 +103,7 @@ npm test
 You can run tests for the Django back-end using the following commands 🧪🧑‍🔬
 ```bash
 cd Frontend/HelloMovies
-npx cypress open
+npx cypress run
 ```
 
 

@@ -8,7 +8,7 @@ export default function Header() {
         data-testid="headerLogo"
         onClick={() => navigate("/")}
         src="/logos/header-logo.svg"
-        alt="header img"
+        alt="header-img"
         className=" h-6 md:h-8 lg:h-8 cursor-pointer"
       />
     </header>

@@ -1,12 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const searchTerm = "The Matrix";
-const API_URL = "http://127.0.0.1:8000/";
+// const API_URL = "http://127.0.0.1:8000/";
+const API_URL = "http://0.0.0.0:8000/";
 const CLIENT_URL = "http://localhost:5173/";
 
-describe("Search for movies by keyword", () => {
+// The browser can render our page correctly (without
+// any script errors
+
+describe("Hello Movies Application", () => {
   beforeEach(() => {
     cy.visit(`${CLIENT_URL}`);
+  });
+  it("Visits the Hello Movies App", function () {
+    cy.get('[data-testid="headerLogo"]').should("exist");
+  });
+  it("Shows a search bar", () => {
+    cy.get('[data-testid="search-bar"]').should("exist");
   });
 
   it("should display the search input", () => {
@@ -81,21 +91,40 @@ describe("Search for movies by keyword", () => {
     cy.get('[data-testid="page-number"]').should("contain", "1");
     cy.get('[data-testid="movie-card"]').should("exist");
   });
-  it("should open the dedicated movie's view when a movie card is clicked and back button", () => {
-    cy.intercept("GET", `${API_URL}/search/?q=a&page=1`).as("fetchData");
+  it("should open the dedicated movie's view when a movie card is clicked", () => {
+    cy.intercept("GET", `${API_URL}movies/search/?q=a&page=1`).as("fetchData");
+    cy.intercept("GET", new RegExp(`${API_URL}/movies/\\d+`)).as("fetchMovie");
+
     const correctTerm = "a";
     cy.get('[data-testid="search-bar"]').type(correctTerm);
     cy.get('[data-testid="search-bar"]').type("{enter}");
 
     cy.wait("@fetchData");
 
+    cy.get('[data-testid="movie-card"]').should("exist");
     cy.get('[data-testid="movie-card"]').first().click();
 
-    cy.url().should("include", "/14");
+    cy.wait("@fetchMovie").its("response.statusCode").should("eq", 200);
 
     cy.get('[data-testid="movie-details"]').should("exist");
-    cy.visit(`${CLIENT_URL}14`);
+  });
+  it("Should go to home when user click on header logo", () => {
+    cy.intercept("GET", `${API_URL}movies/search/?q=a&page=1`).as("fetchData");
+    cy.intercept("GET", new RegExp(`${API_URL}/movies/\\d+`)).as("fetchMovie");
+
+    const correctTerm = "a";
+    cy.get('[data-testid="search-bar"]').type(correctTerm);
+    cy.get('[data-testid="search-bar"]').type("{enter}");
+
+    cy.wait("@fetchData");
+
+    cy.get('[data-testid="movie-card"]').should("exist");
+    cy.get('[data-testid="movie-card"]').first().click();
+
+    cy.wait("@fetchMovie").its("response.statusCode").should("eq", 200);
+
     cy.get('[data-testid="movie-details"]').should("exist");
+
     cy.get('[data-testid="headerLogo"]').click();
     cy.url().should("include", "/");
   });

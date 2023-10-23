@@ -1,69 +1,17 @@
-import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import { cn } from "../utils/cn";
-import { Movie } from "./Home";
 import Loader from "../components/Loader";
 import ErrorBox from "../components/ErrorBox";
-
-const API_URL = "http://0.0.0.0:8000/";
+import useMovieDetails from "../hooks/useMovieDetails";
+import { splitText } from "../utils/splitText";
 
 export default function Details() {
   const navigate = useNavigate();
-  const [movieDetails, setMovieDetails] = useState<Movie | null>();
-  const [loading, setLoading] = useState(false);
-  const [error, setErorr] = useState(false);
   const { id } = useParams();
-  useEffect(() => {
-    setLoading(true);
-    async function fetchDataFromDatabase() {
-      const url = `${API_URL}/movies/`;
-      try {
-        // Make a GET request to the database API endpoint
-        const response = await fetch(`${url}${id}/`, {
-          method: "GET",
-        });
-
-        // Check if the response status code is OK (200)
-        if (!response.ok) {
-          setErorr(true);
-        }
-        if (response.ok) {
-          setErorr(false);
-        }
-
-        const data = await response.json();
-
-        console.log(data);
-        return data;
-      } catch (error) {
-        return error;
-      }
-    }
-
-    // Usage
-    fetchDataFromDatabase()
-      .then((data) => {
-        setMovieDetails(data);
-        setLoading(false);
-        console.log(data);
-      })
-      .catch((error) => {
-        if (error instanceof Response && error.status === 404) {
-          console.log(error);
-        } else {
-          console.error("Error fetching data:", error);
-        }
-      });
-  }, [id]);
-
-  const genresArray = movieDetails?.genres
-    .split(",")
-    .map((genre) => genre.trim());
-
-  const actorsArray = movieDetails?.actors
-    .split(",")
-    .map((genre) => genre.trim());
+  const { error, loading, movieDetails } = useMovieDetails({
+    id,
+  });
 
   return (
     <Layout>
@@ -100,7 +48,7 @@ export default function Details() {
                   </p>
                   <div className="gap-4  flex flex-col lg:flex lg:justify-between">
                     <div className="flex gap-2 flex-wrap">
-                      {genresArray?.map((genre) => (
+                      {splitText(movieDetails?.genres)?.map((genre) => (
                         <div className="py-1 px-2 bg-dark text-xs rounded-lg">
                           {genre}
                         </div>
@@ -143,7 +91,7 @@ export default function Details() {
                   <div className="flex gap-5">
                     <p>Actors:</p>
                     <div className="grid grid-cols-1  ">
-                      {actorsArray?.map((actor) => (
+                      {splitText(movieDetails?.actors)?.map((actor) => (
                         <p>{actor}</p>
                       ))}
                     </div>
@@ -173,7 +121,11 @@ export default function Details() {
           </div>
         </>
       )}
-      {error && <ErrorBox errorMessage="Pls try again later" />}
+      {error && (
+        <div className="w-fit">
+          <ErrorBox errorMessage={error} />
+        </div>
+      )}
     </Layout>
   );
 }

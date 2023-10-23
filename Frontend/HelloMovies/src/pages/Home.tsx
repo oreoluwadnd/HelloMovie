@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Input } from "../components/TextInput";
 import Layout from "../components/Layout";
 import MovieResult from "../components/MovieResult";
 import { useNavigate, useLocation } from "react-router-dom";
+import useMovies from "../hooks/useMovies";
 import Loader from "../components/Loader";
 import ErrorBox from "../components/ErrorBox";
 
@@ -27,7 +28,7 @@ export type MoviesData = {
   results: Movie[];
 };
 
-const API_URL = "http://0.0.0.0:8000/";
+// const API_URL = "http://127.0.0.1:8000/";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -36,70 +37,11 @@ export default function Home() {
   const query = queryParams.get("q") || "";
   const page = parseInt(queryParams.get("page") || "1", 10);
   const [keyword, setKeyword] = useState<string>("");
-  const [movies, setMovies] = useState<MoviesData | null>();
-  const [loading, setLoading] = useState(false);
-  const [error, setErorr] = useState("");
 
-  console.log(query);
-  console.log(page);
-
-  useEffect(() => {
-    if (!query) {
-      setMovies(null);
-      setErorr("");
-      return;
-    }
-    setLoading(true);
-    console.log(query, page);
-    async function fetchDataFromDatabase() {
-      const url = `${API_URL}movies/search/`;
-      try {
-        // Make a GET request to the database API endpoint
-        const response = await fetch(`${url}?q=${query}&page=${page}`, {
-          method: "GET",
-        });
-
-        // Check if the response status code is OK (200)
-        if (!response.ok) {
-          setErorr(`No results found for "${query}"`);
-          return;
-        }
-        if (response.ok) {
-          setErorr("");
-        }
-
-        // Parse the JSON response data
-        const data = await response.json();
-
-        // Use the retrieved data
-        console.log(data);
-        return data;
-      } catch (error) {
-        // setErorr(`Something went wrong`);
-      }
-    }
-
-    // Usage
-    fetchDataFromDatabase()
-      .then((data) => {
-        // Do something with the data
-        setMovies(data);
-        setLoading(false);
-        console.log(data);
-      })
-      .catch((error) => {
-        if (error instanceof Response && error.status === 404) {
-          setErorr(`No results found for ${query}`);
-        } else {
-          console.error("Error fetching data:", error);
-        }
-      });
-  }, [query, page]);
-
+  const { error, loading, movies } = useMovies({ page, query });
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(event.target.value);
   };
-
   const handleKeypress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && keyword !== "") {
       const path = location.pathname;

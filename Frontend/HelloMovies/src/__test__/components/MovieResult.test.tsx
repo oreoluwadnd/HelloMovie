@@ -28,7 +28,7 @@ test("MovieResult component renders correctly", () => {
 
   render(
     <MemoryRouter initialEntries={["/"]}>
-      <MovieResult movies={movies} handlePageChange={handlePageChange} />{" "}
+      <MovieResult movies={movies} handlePageChange={handlePageChange} />
     </MemoryRouter>
   );
   const foundMoviesText = screen.getByText("Sample Movie");
