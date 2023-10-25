@@ -1,0 +1,15 @@
+version: "3"
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Backend/helloMovies/Dockerfile
+    ports:
+      - "8000:8000"
+
+  react:
+    build:
+      context: .
+      dockerfile: Frontend/HelloMovies/Dockerfile
+    ports:
+      - "5173:5173"

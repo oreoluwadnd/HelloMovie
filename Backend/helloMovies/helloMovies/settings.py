@@ -15,6 +15,11 @@ import sys
 
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -92,12 +97,14 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'hellomovies',
-            'HOST': 'aws.connect.psdb.cloud',
-            'PORT': '3306',
-            'USER': 'okak7crcub5ic5lajj8m',
-            'PASSWORD': 'pscale_pw_8rhrVZoUqXgb9sFblsKm6sFMm7rVsUQApMv9TDLd1Dj',
-            'OPTIONS': {'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'}}
+            'NAME': os.getenv("DB_NAME"),
+            'HOST': os.getenv("DB_HOST"),
+            'PORT': os.getenv("DB_PORT"),
+            'USER': os.getenv("DB_USER"),
+            'PASSWORD': os.getenv("DB_PASSWORD"),
+            'OPTIONS': {
+                 'charset': 'utf8mb4',
+                'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'},}
         }
     }
 
@@ -121,6 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
@@ -148,7 +156,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Allow any origin (not recommended for production)
 CORS_ALLOW_ALL_ORIGINS = True
-
+ALLOWED_HOSTS = ['0.0.0.0' , "127.0.0.1"]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     # Add any other origins that should be allowed
